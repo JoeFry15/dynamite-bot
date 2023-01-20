@@ -6,8 +6,6 @@ class Bot {
 
         const p1DCount = gamestate.rounds.reduce((a, b) => b.p1 === 'D' ? a + 1 : a, 0);
 
-        const p2DCount = gamestate.rounds.reduce((a, b) => b.p2 === 'D' ? a + 1 : a, 0);
-
 
         if (gamestate.rounds.length > 1 && gamestate.rounds[gamestate.rounds.length - 1].p2 === 'D' && gamestate.rounds[gamestate.rounds.length - 2].p2 === 'D') {
             return 'W';
@@ -19,18 +17,8 @@ class Bot {
         }
 
         else if ((p1DCount < 100) && (gamestate.rounds.length > 1000)) {
-            if ((p2DCount < 100) && p2DCount > 5) {
-                let randomIndex = Math.floor(5 * Math.random());
-                return ['R', 'P', 'S', 'W', 'D'][randomIndex];
-            } else {
-                let randomIndex = Math.floor(4 * Math.random());
-                return ['R', 'P', 'S', 'D'][randomIndex];
-            }
-        }
-
-        else if (p2DCount < 100 && p2DCount > 5) {
             let randomIndex = Math.floor(4 * Math.random());
-            return ['R', 'P', 'S', 'W'][randomIndex];
+            return ['R', 'P', 'S', 'D'][randomIndex];
         }
 
         else {
